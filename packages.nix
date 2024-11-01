@@ -14,4 +14,7 @@ with pkgs; [
   tmux
   libreoffice
   zsh
+  cryptsetup
+  gnupg
+  pinentry
 ]

@@ -81,7 +81,10 @@
     isNormalUser = true;
     description = "Ludvig Gunne Lindström";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
+    shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
 
   home-manager.users.ludviggl = {
     home.stateVersion = "24.05";
@@ -94,6 +97,10 @@
     programs.tmux = import ./tmux.nix;
     programs.zsh = import ./zsh.nix;
     programs.helix = import ./helix.nix;
+    programs.gpg = import ./gpg.nix;
+    programs.direnv = import ./direnv.nix;
+
+    services.gpg-agent = import ./gpg-agent.nix { inherit pkgs; };
   };
 
   fonts.packages = import ./fonts.nix { inherit pkgs; };
