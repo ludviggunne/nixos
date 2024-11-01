@@ -9,5 +9,6 @@
         family = "terminus";
       };
     };
+    cursor.style = { shape = "Beam"; blinking = "Off"; };
   };
 }

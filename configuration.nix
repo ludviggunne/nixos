@@ -82,6 +82,9 @@
     description = "Ludvig Gunne Lindström";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     shell = pkgs.zsh;
+    packages = with pkgs; [
+      gdb
+    ];
   };
 
   programs.zsh.enable = true;
@@ -91,6 +94,7 @@
     home.packages = import ./packages.nix { inherit pkgs; };
 
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
+    home.file.".gdbinit".source = ./extra/.gdbinit;
 
     programs.git = import ./git.nix;
     programs.alacritty = import ./alacritty.nix;
