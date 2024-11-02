@@ -84,18 +84,23 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       gdb
+      ccache
     ];
   };
 
   programs.zsh.enable = true;
 
+  # @home
   home-manager.users.ludviggl = {
     home.stateVersion = "24.05";
     home.packages = import ./packages.nix { inherit pkgs; };
 
+    # @extra
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
     home.file.".gdbinit".source = ./extra/.gdbinit;
+    home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
 
+    # @programs
     programs.git = import ./git.nix;
     programs.alacritty = import ./alacritty.nix;
     programs.tmux = import ./tmux.nix;
@@ -103,10 +108,13 @@
     programs.helix = import ./helix.nix;
     programs.gpg = import ./gpg.nix;
     programs.direnv = import ./direnv.nix;
+    programs.rofi = import ./rofi.nix;
 
+    # @services
     services.gpg-agent = import ./gpg-agent.nix { inherit pkgs; };
   };
 
+  # @fonts
   fonts.packages = import ./fonts.nix { inherit pkgs; };
 
   environment.systemPackages = with pkgs; [ ];

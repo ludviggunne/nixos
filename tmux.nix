@@ -2,6 +2,7 @@
   enable = true;
   extraConfig = ''
     set -g prefix C-e
+    set -s escape-time 0
 
     bind C-e send-prefix
     bind n split-window -hc "#{pane_current_path}"
