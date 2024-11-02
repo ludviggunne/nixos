@@ -9,6 +9,7 @@
     tn = "tmux new-session -s";
     tl = "tmux ls";
     nixde = "echo use nix > .envrc; direnv allow";
+    nixdef = "echo use flake > .envrc; direnv allow";
   };
   initExtra = ''
     export EDITOR=hx

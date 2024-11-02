@@ -17,4 +17,6 @@ with pkgs; [
   cryptsetup
   gnupg
   pinentry
+  ardour
+  surge-XT
 ]

@@ -77,6 +77,8 @@
     #media-session.enable = true;
   };
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   users.users.ludviggl = {
     isNormalUser = true;
     description = "Ludvig Gunne Lindström";
