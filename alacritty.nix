@@ -4,7 +4,7 @@
     shell = "zsh";
     import = [ "~/.config/alacritty/zenburn.toml" ];
     font = {
-      size = 6;
+      size = 7;
       normal = {
         family = "terminus";
       };

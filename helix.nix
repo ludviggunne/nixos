@@ -26,11 +26,9 @@
         C-j = [ "goto_next_paragraph" ];
         C-k = [ "goto_prev_paragraph" ];
         C-y = [ ":clipboard-yank" ];
+        C-h = [ "flip_selections" ];
     }; in {
       normal = common // {
-        C-h = [ "flip_selections" ];
-        C-j = [ "goto_next_paragraph" ];
-        C-k = [ "goto_prev_paragraph" ];
         S-d = [ "vsplit" "goto_definition" ];
         C-r = [ ":reload" ];
       };

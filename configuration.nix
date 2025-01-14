@@ -25,6 +25,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # VPN
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
+
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
@@ -50,6 +54,8 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 
+  hardware.opengl.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "se";
@@ -61,6 +67,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -72,10 +83,22 @@
     pulse.enable = true;
     jack.enable = true;
 
+    extraConfig.pipewire."92-low-latency" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.quantum" = 1024;
+        "default.clock.min-quantum" = 1024;
+        "default.clock.max-quantum" = 1024;
+      };
+    };
+
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -84,6 +107,7 @@
     description = "Ludvig Gunne Lindström";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     shell = pkgs.zsh;
+    useDefaultShell = true;
     packages = with pkgs; [
       gdb
       ccache
@@ -95,7 +119,7 @@
   # @home
   home-manager.users.ludviggl = {
     home.stateVersion = "24.05";
-    home.packages = import ./packages.nix { inherit pkgs; };
+    home.packages = import ./hm-packages.nix { inherit pkgs; };
 
     # @extra
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
@@ -111,6 +135,7 @@
     programs.gpg = import ./gpg.nix;
     programs.direnv = import ./direnv.nix;
     programs.rofi = import ./rofi.nix;
+    programs.vim = import ./vim.nix { inherit pkgs; };
 
     # @services
     services.gpg-agent = import ./gpg-agent.nix { inherit pkgs; };
@@ -119,7 +144,9 @@
   # @fonts
   fonts.packages = import ./fonts.nix { inherit pkgs; };
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ ntfs3g ];
+
+  documentation.dev.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -132,7 +159,15 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "ludviggl" ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -148,4 +183,18 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  services.pipewire.extraConfig.pipewire."91-null-sinks" = {
+    "context.objects" = [
+      {
+        # A default dummy driver. This handles nodes marked with the "node.always-driver"
+        # properyty when no other driver is currently active. JACK clients need this.
+        factory = "spa-node-factory";
+        args = {
+          "factory.name"     = "support.node.driver";
+          "node.name"        = "Dummy-Driver";
+          "priority.driver"  = 8000;
+        };
+      }
+    ];
+  };
 }

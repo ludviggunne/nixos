@@ -1,0 +1,38 @@
+{
+  pkgs,
+}:
+
+with pkgs; [
+  helix
+  alacritty
+  qutebrowser
+  curl
+  wget
+  git
+  pass
+  evince
+  tmux
+  libreoffice
+  zsh
+  cryptsetup
+  gnupg
+  pinentry
+  ardour
+  surge-XT
+  man-pages
+  man-pages-posix
+  stdmanpages
+  sxiv
+  watchexec
+  pavucontrol
+  spotify-qt
+  spotifyd
+  prismlauncher
+  strawberry
+  blender
+  moreutils
+  qbittorrent
+  vlc
+  termdown
+  hub
+]
