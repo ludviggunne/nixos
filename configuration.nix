@@ -123,6 +123,7 @@
 
     # @extra
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
+    xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
     home.file.".gdbinit".source = ./extra/.gdbinit;
     home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
 
@@ -131,7 +132,7 @@
     programs.alacritty = import ./alacritty.nix;
     programs.tmux = import ./tmux.nix;
     programs.zsh = import ./zsh.nix;
-    programs.helix = import ./helix.nix;
+    programs.helix = import ./helix.nix { inherit pkgs; };
     programs.gpg = import ./gpg.nix;
     programs.direnv = import ./direnv.nix;
     programs.rofi = import ./rofi.nix;

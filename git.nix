@@ -16,11 +16,13 @@
   };
   extraConfig = {
     core.editor = "hx";
+    # core.pager = "bat";
   };
   ignores = [
     ".direnv/"
     ".envrc"
     "*.nix"
     ".helix/"
+    ".ccls-cache/"
   ];
 }

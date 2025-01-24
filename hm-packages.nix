@@ -2,7 +2,7 @@
   pkgs,
 }:
 
-with pkgs; [
+(with pkgs; [ # nixpkgs
   helix
   alacritty
   qutebrowser
@@ -35,4 +35,22 @@ with pkgs; [
   vlc
   termdown
   hub
-]
+  bat
+  gh
+  gh-dash
+  gh-notify
+  fzf
+  xclip
+  ccls
+  python3
+]) ++ ( # stuff from github
+  let repos = [
+    {
+      owner = "ludviggunne";
+      repo = "rmc";
+      rev = "3e99eb0663c07aaf8b3f599d011f38990fab3554";
+      sha256 = "sha256-samSitJttnoWIAqtlkwtOKwKdAklNtDv2oQ5WI/v4b4=";
+    }
+  ];
+  in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
+)
