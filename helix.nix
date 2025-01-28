@@ -5,13 +5,15 @@
 {
   enable = true;
   settings = {
-    theme = "monochrome";
+    # theme = "monochrome";
+    theme = "zenburn";
     editor = {
       line-number = "relative";
       mouse = false;
       statusline.center = [ "version-control" ];
       smart-tab.enable = false;
       auto-completion = false;
+      lsp.auto-signature-help = false;
       auto-pairs = false;
 
       cursor-shape = {

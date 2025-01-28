@@ -17,20 +17,20 @@
     bind Enter new-window
     bind '-' detach-client
 
-    setw -g clock-mode-colour yellow
-    setw -g mode-style "fg=gray bg=gray bold"
-    set -g pane-border-style "fg=gray"
-    set -g pane-active-border-style "fg=yellow"
-    set -g status-position bottom
-    set -g status-justify left
-    set -g status-style "fg=gray"
-    set -g status-left ""
-    set -g status-left-length 10
-    set -g status-right-style "fg=black bg=gray"
-    set -g status-right "%Y-%m-%d %H:%M "
-    set -g status-right-length 50
-    setw -g window-status-current-style "fg=gray bg=black"
-    setw -g window-status-style "fg=gray bg=black"
+    # setw -g clock-mode-colour yellow
+    # setw -g mode-style "fg=gray bg=gray bold"
+    # set -g pane-border-style "fg=gray"
+    # set -g pane-active-border-style "fg=yellow"
+    # set -g status-position bottom
+    # set -g status-justify left
+    # set -g status-style "fg=gray"
+    # set -g status-left ""
+    # set -g status-left-length 10
+    # set -g status-right-style "fg=black bg=gray"
+    # set -g status-right "%Y-%m-%d %H:%M "
+    # set -g status-right-length 50
+    # setw -g window-status-current-style "fg=gray bg=black"
+    # setw -g window-status-style "fg=gray bg=black"
 
     set -g base-index 1
     setw -g pane-base-index 1

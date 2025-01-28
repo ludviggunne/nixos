@@ -2,9 +2,9 @@
   enable = true;
   settings = {
     shell = "zsh";
-    # import = [ "~/.config/alacritty/zenburn.toml" ];
+    import = [ "~/.config/alacritty/zenburn.toml" ];
     font = {
-      size = 5;
+      size = 7;
       normal = {
         family = "SauceCodePro Nerd Font Mono";
       };

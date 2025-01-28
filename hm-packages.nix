@@ -48,9 +48,17 @@
     {
       owner = "ludviggunne";
       repo = "rmc";
-      rev = "3e99eb0663c07aaf8b3f599d011f38990fab3554";
-      sha256 = "sha256-samSitJttnoWIAqtlkwtOKwKdAklNtDv2oQ5WI/v4b4=";
+      rev = "a6863900c276ad6f2c91c8465eef594abb07f360";
+      sha256 = "sha256-fQqWTlGjDZnTICNqaWFHEJx2QtHe36LukjD/JEvr5BE=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
+) ++ ( # scripts
+  let scripts = [
+    {
+      path = ./extra/git-fzf.sh;
+      name = "git-fzf";
+    }
+  ];
+  in map (script: pkgs.writeShellScriptBin script.name (builtins.readFile script.path)) scripts
 )
