@@ -14,7 +14,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl."kernel.yama.ptrace_scope" = 0;
+  boot.kernel.sysctl."kernel.yama.ptrace_scope" = 1;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,7 +55,7 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 
-  hardware.graphics.enable = true;
+  hardware.opengl.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -75,7 +75,7 @@
   };
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -161,7 +161,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # virtualisation.docker.rootless = {
   #   enable = true;

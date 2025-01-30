@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ ! -d ".git" ]; then
+  >&2 echo "not a git repository"
+  exit 1
+fi
+
 use_fzf=false
 
 while true; do
