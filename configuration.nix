@@ -25,6 +25,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # systemd.network.wait-online.enable = false;
+  # boot.initrd.systemd.network.wait-online.enable = false;
 
   # VPN
   services.mullvad-vpn.enable = true;
@@ -168,8 +170,8 @@
   #   setSocketVariable = true;
   # };
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "ludviggl" ];
+  # virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.members = [ "ludviggl" ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

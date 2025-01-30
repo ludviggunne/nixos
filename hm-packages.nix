@@ -31,7 +31,6 @@
   strawberry
   blender
   moreutils
-  qbittorrent
   vlc
   termdown
   hub
