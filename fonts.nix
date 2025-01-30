@@ -4,5 +4,5 @@
 
 with pkgs; [
   terminus_font
-  nerdfonts
+  nerd-fonts.sauce-code-pro
 ]

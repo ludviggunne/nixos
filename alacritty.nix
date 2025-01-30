@@ -1,8 +1,8 @@
 {
   enable = true;
   settings = {
-    shell = "zsh";
-    import = [ "~/.config/alacritty/zenburn.toml" ];
+    terminal.shell = "zsh";
+    general.import = [ "~/.config/alacritty/zenburn.toml" ];
     font = {
       size = 7;
       normal = {
