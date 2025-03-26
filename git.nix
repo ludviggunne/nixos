@@ -16,6 +16,7 @@
   };
   extraConfig = {
     core.editor = "hx";
+    init.defaultBranch = "main";
     # core.pager = "bat";
   };
   ignores = [

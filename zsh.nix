@@ -15,13 +15,23 @@
     gclip = "git log --oneline | fzf | cut -f1 -d' ' | xclip -rmlastnl -selection clipboard";
     git-watch = "watchexec --quiet --clear=reset --no-default-ignore --ignore='*.lock' -- git status --short --branch";
   };
+  profileExtra = ''
+    XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+  '';
   initExtra = ''
     export EDITOR=hx
   '';
+    # autoload -Uz compinit && compinit
   oh-my-zsh = {
     enable = true;
     # theme = "bureau";
-    theme = "dst";
+    # theme = "dst";
     # theme = "afowler";
+    # theme = "fishy";
+    # theme = "gallois";
+    # theme = "lambda";
+    # theme = "mh";
+    # theme = "minimal";
+    theme = "sammy";
   };
 }

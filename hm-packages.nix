@@ -13,7 +13,7 @@
   evince
   tmux
   libreoffice
-  zsh
+  # zsh
   cryptsetup
   gnupg
   pinentry
@@ -35,20 +35,28 @@
   termdown
   hub
   bat
-  gh
-  gh-dash
-  gh-notify
   fzf
   xclip
   ccls
   python3
+  rustup
+  thunderbird
+  # zsh-completions
+  # zsh-forgit
+  vital
+  linuxsampler
+  spotify
+  pdfgrep
+  musescore
+  ripgrep
+  jq
 ]) ++ ( # stuff from github
   let repos = [
     {
       owner = "ludviggunne";
       repo = "rmc";
-      rev = "a6863900c276ad6f2c91c8465eef594abb07f360";
-      sha256 = "sha256-fQqWTlGjDZnTICNqaWFHEJx2QtHe36LukjD/JEvr5BE=";
+      rev = "baa79fbc4247bae644652c3e8303a015c914a0fd";
+      sha256 = "sha256-kW1F5fgDb4nTOXN+AzKueTbbkphp50tr8RZiNcyabYw=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
@@ -57,6 +65,10 @@
     {
       path = ./extra/git-fzf.sh;
       name = "git-fzf";
+    }
+    {
+      path = ./extra/pdfind.sh;
+      name = "pdfind";
     }
   ];
   in map (script: pkgs.writeShellScriptBin script.name (builtins.readFile script.path)) scripts

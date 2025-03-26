@@ -1,12 +1,12 @@
 {
   enable = true;
   settings = {
-    shell = "zsh";
-    import = [ "~/.config/alacritty/zenburn.toml" ];
+    shell = "bash";
+    import = [ "~/.config/alacritty/papercolor_light.toml" ];
     font = {
       size = 7;
       normal = {
-        family = "SauceCodePro Nerd Font Mono";
+        family = "Terminus";
       };
     };
     cursor.style = { shape = "Beam"; blinking = "Off"; };

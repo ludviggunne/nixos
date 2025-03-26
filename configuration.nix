@@ -9,12 +9,16 @@
     [
       ./hardware-configuration.nix
       <home-manager/nixos>
+      <musnix>
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl."kernel.yama.ptrace_scope" = 1;
+  boot.kernel.sysctl = {
+    "kernel.yama.ptrace_scope" = 0;
+    "kernel.perf_event_paranoid" = -1;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -50,6 +54,23 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
+  location.longitude = 18.08;
+  location.latitude = 59.32;
+
+  services.redshift = {
+    enable = true;
+    brightness = {
+      day = "1";
+      night = "1";
+    };
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -58,6 +79,7 @@
   services.xserver.desktopManager.xfce.enable = true;
 
   hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -76,7 +98,8 @@
     openFirewall = true;
   };
 
-  # Enable sound with pipewire.
+  # @audio
+  musnix.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -86,14 +109,14 @@
     pulse.enable = true;
     jack.enable = true;
 
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 1024;
-        "default.clock.min-quantum" = 1024;
-        "default.clock.max-quantum" = 1024;
-      };
-    };
+    # extraConfig.pipewire."92-low-latency" = {
+    #   "context.properties" = {
+    #     "default.clock.rate" = 48000;
+    #     "default.clock.quantum" = 1024;
+    #     "default.clock.min-quantum" = 1024;
+    #     "default.clock.max-quantum" = 1024;
+    #   };
+    # };
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -108,8 +131,8 @@
   users.users.ludviggl = {
     isNormalUser = true;
     description = "Ludvig Gunne Lindström";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
-    shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
+    shell = pkgs.bash;
     useDefaultShell = true;
     packages = with pkgs; [
       gdb
@@ -117,7 +140,7 @@
     ];
   };
 
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
 
   # @home
   home-manager.users.ludviggl = {
@@ -126,15 +149,19 @@
 
     # @extra
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
+    xdg.configFile."alacritty/acme.toml".source = ./extra/alacritty-acme.toml;
+    xdg.configFile."alacritty/papercolor_light.toml".source = ./extra/alacritty-papercolor_light.toml;
     xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
     home.file.".gdbinit".source = ./extra/.gdbinit;
     home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
+    home.file.".bashrc".source = ./extra/bashrc;
+    home.file.".bash_profile".source = ./extra/bash_profile;
 
     # @programs
     programs.git = import ./git.nix;
     programs.alacritty = import ./alacritty.nix;
     programs.tmux = import ./tmux.nix;
-    programs.zsh = import ./zsh.nix;
+    # programs.zsh = import ./zsh.nix;
     programs.helix = import ./helix.nix { inherit pkgs; };
     programs.gpg = import ./gpg.nix;
     programs.direnv = import ./direnv.nix;
@@ -187,18 +214,18 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  services.pipewire.extraConfig.pipewire."91-null-sinks" = {
-    "context.objects" = [
-      {
-        # A default dummy driver. This handles nodes marked with the "node.always-driver"
-        # properyty when no other driver is currently active. JACK clients need this.
-        factory = "spa-node-factory";
-        args = {
-          "factory.name"     = "support.node.driver";
-          "node.name"        = "Dummy-Driver";
-          "priority.driver"  = 8000;
-        };
-      }
-    ];
-  };
+  # services.pipewire.extraConfig.pipewire."91-null-sinks" = {
+  #   "context.objects" = [
+  #     {
+  #       # A default dummy driver. This handles nodes marked with the "node.always-driver"
+  #       # properyty when no other driver is currently active. JACK clients need this.
+  #       factory = "spa-node-factory";
+  #       args = {
+  #         "factory.name"     = "support.node.driver";
+  #         "node.name"        = "Dummy-Driver";
+  #         "priority.driver"  = 8000;
+  #       };
+  #     }
+  #   ];
+  # };
 }

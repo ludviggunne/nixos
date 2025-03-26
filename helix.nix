@@ -6,7 +6,7 @@
   enable = true;
   settings = {
     # theme = "monochrome";
-    theme = "zenburn";
+    theme = "papercolor-light";
     editor = {
       line-number = "relative";
       mouse = false;

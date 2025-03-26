@@ -32,6 +32,10 @@
     # setw -g window-status-current-style "fg=gray bg=black"
     # setw -g window-status-style "fg=gray bg=black"
 
+    # set-option -ga terminal-overrides ",xterm-256color:Tc"
+    # set -g default-terminal "xterm-256color"
+    set -g default-terminal "tmux-256color"
+
     set -g base-index 1
     setw -g pane-base-index 1
     set -g mouse on 
