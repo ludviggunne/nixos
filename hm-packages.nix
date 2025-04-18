@@ -37,12 +37,10 @@
   bat
   fzf
   xclip
-  ccls
+  clang-tools
   python3
   rustup
   thunderbird
-  # zsh-completions
-  # zsh-forgit
   vital
   linuxsampler
   spotify
@@ -50,6 +48,10 @@
   musescore
   ripgrep
   jq
+  slack
+  discord
+  chromium
+  git-extras
 ]) ++ ( # stuff from github
   let repos = [
     {
@@ -57,6 +59,12 @@
       repo = "rmc";
       rev = "baa79fbc4247bae644652c3e8303a015c914a0fd";
       sha256 = "sha256-kW1F5fgDb4nTOXN+AzKueTbbkphp50tr8RZiNcyabYw=";
+    }
+    {
+      owner = "ludviggunne";
+      repo = "git-commands";
+      rev = "14b79bdae2cec520f67ed631a91e0ab8f554dd4d";
+      sha256 = "sha256-EXQ+oNsexuxxXEygYa/ZKq734o1jMz63IdNjFmnUcQ4=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos

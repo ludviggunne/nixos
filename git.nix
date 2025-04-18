@@ -22,7 +22,6 @@
   ignores = [
     ".direnv/"
     ".envrc"
-    "*.nix"
     ".helix/"
     ".ccls-cache/"
   ];

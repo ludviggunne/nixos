@@ -16,15 +16,24 @@ alias git-watch="watchexec --quiet --clear=reset --no-default-ignore --ignore='*
 run-once () {
 	if [ $# = 1 ]
 	then
-		exec nix-shell -p "$1" --run "exec $*"
+		nix-shell -p "$1" --run "$*" &
+		disown
+		exit
 	else
 		>&2 echo 'usage: run-once <package> [args...]'
 	fi
 }
 export -f run-once
 
+cwdgrep () {
+	for pid in $(pgrep $@); do
+		readlink /proc/$pid/cwd
+	done
+}
+export -f cwdgrep
+
 eval "$(direnv hook bash)"
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
-export PS1='[\u@\h:\w$(__git_ps1 " (%s)")]\$ '
+export PS1='[\u@\h:\W$(__git_ps1 " (%s)")]\$ '

@@ -6,7 +6,7 @@
   enable = true;
   settings = {
     # theme = "monochrome";
-    theme = "papercolor-light";
+    theme = "${import ./theme.nix}";
     editor = {
       line-number = "relative";
       mouse = false;
@@ -40,19 +40,5 @@
       };
       select = common // {};
     };
-  };
-
-  languages = {
-    language-server.ccls = { command = "${pkgs.ccls}/bin/ccls"; };
-    language = [
-      {
-        name = "c";
-        language-servers = [ "ccls" ];
-      }
-      {
-        name = "cpp";
-        language-servers = [ "ccls" ];
-      }
-    ];
   };
 }

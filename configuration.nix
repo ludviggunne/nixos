@@ -140,6 +140,8 @@
     ];
   };
 
+  services.nixseparatedebuginfod.enable = true;
+
   # programs.zsh.enable = true;
 
   # @home
@@ -150,7 +152,7 @@
     # @extra
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
     xdg.configFile."alacritty/acme.toml".source = ./extra/alacritty-acme.toml;
-    xdg.configFile."alacritty/papercolor_light.toml".source = ./extra/alacritty-papercolor_light.toml;
+    xdg.configFile."alacritty/papercolor-light.toml".source = ./extra/alacritty-papercolor_light.toml;
     xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
     home.file.".gdbinit".source = ./extra/.gdbinit;
     home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
@@ -199,6 +201,8 @@
 
   # virtualisation.virtualbox.host.enable = true;
   # users.extraGroups.vboxusers.members = [ "ludviggl" ];
+
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
