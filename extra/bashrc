@@ -32,8 +32,25 @@ cwdgrep () {
 }
 export -f cwdgrep
 
+fzed () {
+	RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+	EDIT="$EDITOR {1} +{2}"
+
+	fzf --disabled --ansi --multi \
+	  --bind "start:$RELOAD" --bind "change:$RELOAD" \
+	  --bind "enter:become:$EDIT" \
+	  --bind "ctrl-o:execute:$EDIT" \
+	  --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
+	  --delimiter : \
+	  --preview 'bat --style=full --theme base16 --color=always --highlight-line {2} {1}' \
+	  --preview-window '~4,+{2}+4/3,<80(up)' \
+	  --query "$*"
+}
+
 eval "$(direnv hook bash)"
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
 export PS1='[\u@\h:\W$(__git_ps1 " (%s)")]\$ '
+
+export HISTCONTROL=ignoreboth:erasedups

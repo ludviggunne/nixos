@@ -51,7 +51,7 @@
   slack
   discord
   chromium
-  git-extras
+  obs-studio
 ]) ++ ( # stuff from github
   let repos = [
     {
@@ -63,8 +63,8 @@
     {
       owner = "ludviggunne";
       repo = "git-commands";
-      rev = "14b79bdae2cec520f67ed631a91e0ab8f554dd4d";
-      sha256 = "sha256-EXQ+oNsexuxxXEygYa/ZKq734o1jMz63IdNjFmnUcQ4=";
+      rev = "1ae8558159f61e451754c374ec1f8fb8b0097deb";
+      sha256 = "sha256-TpHkvNkDsfkjhfI6jsLP/DLc4+mkgT1YKbv1NBmBKxs=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
@@ -77,6 +77,10 @@
     {
       path = ./extra/pdfind.sh;
       name = "pdfind";
+    }
+    {
+      path = ./extra/spotify-play-pause.sh;
+      name = "spotify-play-pause";
     }
   ];
   in map (script: pkgs.writeShellScriptBin script.name (builtins.readFile script.path)) scripts
