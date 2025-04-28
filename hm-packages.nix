@@ -52,6 +52,7 @@
   discord
   chromium
   obs-studio
+  ranger
 ]) ++ ( # stuff from github
   let repos = [
     {

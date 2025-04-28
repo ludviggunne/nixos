@@ -163,6 +163,7 @@
     programs.git = import ./git.nix;
     programs.alacritty = import ./alacritty.nix;
     programs.tmux = import ./tmux.nix;
+    programs.bat = import ./bat.nix;
     # programs.zsh = import ./zsh.nix;
     programs.helix = import ./helix.nix { inherit pkgs; };
     programs.gpg = import ./gpg.nix;
