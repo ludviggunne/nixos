@@ -1,1 +1,1 @@
-"papercolor-light"
+"rose_pine_dawn"

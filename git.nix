@@ -24,5 +24,6 @@
     ".envrc"
     ".helix/"
     ".ccls-cache/"
+    ".cache/"
   ];
 }

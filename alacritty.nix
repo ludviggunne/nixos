@@ -6,7 +6,7 @@
     font = {
       size = 7;
       normal = {
-        family = "Hack Nerd Font Mono";
+        family = "Terminus";
       };
     };
     cursor.style = { shape = "Beam"; blinking = "Off"; };

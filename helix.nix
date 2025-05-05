@@ -41,4 +41,25 @@
       select = common // {};
     };
   };
+
+  languages = {
+    language = [
+      {
+        name = "faust";
+        grammar = "faust";
+        scope = "source.dsp";
+        file-types = [ "dsp" ];
+      }
+    ];
+
+    grammar = [
+      {
+        name = "faust";
+        source = {
+          git = "https://github.com/khiner/tree-sitter-faust";
+          rev = "f3b9274514b5f9bf6b0dd4a01c30f9cc15c58bc4";
+        };
+      }
+    ];
+  };
 }

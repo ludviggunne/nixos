@@ -53,6 +53,7 @@
   chromium
   obs-studio
   ranger
+  audacity
 ]) ++ ( # stuff from github
   let repos = [
     {
@@ -64,8 +65,8 @@
     {
       owner = "ludviggunne";
       repo = "git-commands";
-      rev = "1ae8558159f61e451754c374ec1f8fb8b0097deb";
-      sha256 = "sha256-TpHkvNkDsfkjhfI6jsLP/DLc4+mkgT1YKbv1NBmBKxs=";
+      rev = "4160de6699fad6b5c6f00a0596d0c371ee19b2fb";
+      sha256 = "sha256-7ta8d/9m1tHmTox66hbls8mwzEjHTA8jBfnWkQr4Ltk=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
