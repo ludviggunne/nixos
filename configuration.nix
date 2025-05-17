@@ -154,6 +154,10 @@
     xdg.configFile."alacritty/acme.toml".source = ./extra/alacritty-acme.toml;
     xdg.configFile."alacritty/papercolor-light.toml".source = ./extra/alacritty-papercolor_light.toml;
     xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
+    xdg.configFile."gdb/grep.py".source = pkgs.fetchurl {
+      url = "https://github.com/ludviggunne/gdb-scripts/raw/refs/heads/main/grep.py";
+      hash = "sha256-6ckfwLxPaXpiCkwIELI2UT9wD3LaiER2kNtqwQ74N4E=";
+    };
     home.file.".gdbinit".source = ./extra/.gdbinit;
     home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
     home.file.".bashrc".source = ./extra/bashrc;
