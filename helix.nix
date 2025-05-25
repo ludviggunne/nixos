@@ -5,8 +5,8 @@
 {
   enable = true;
   settings = {
-    # theme = "monochrome";
-    theme = "${import ./theme.nix}";
+    theme = "base16_transparent-patch";
+    # theme = "${import ./theme.nix}";
     editor = {
       line-number = "relative";
       mouse = false;

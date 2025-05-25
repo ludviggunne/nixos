@@ -3,7 +3,6 @@
 }:
 
 (with pkgs; [ # nixpkgs
-  helix
   alacritty
   qutebrowser
   curl
@@ -54,6 +53,7 @@
   obs-studio
   ranger
   audacity
+  unzip
 ]) ++ ( # stuff from github
   let repos = [
     {
@@ -65,8 +65,8 @@
     {
       owner = "ludviggunne";
       repo = "git-commands";
-      rev = "4160de6699fad6b5c6f00a0596d0c371ee19b2fb";
-      sha256 = "sha256-7ta8d/9m1tHmTox66hbls8mwzEjHTA8jBfnWkQr4Ltk=";
+      rev = "802cf6706ad13ba97b6c1b80d0de722aa250ccc7";
+      sha256 = "sha256-nXDOIq9kjnCGCiWzWz6LwInW+A+6+/ovbslyQJXhhzc";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
@@ -86,4 +86,10 @@
     }
   ];
   in map (script: pkgs.writeShellScriptBin script.name (builtins.readFile script.path)) scripts
+) ++ ( # unstable stuff
+  let nixpkgs-unstable = import <nixpkgs-unstable> {}; in
+  with nixpkgs-unstable; [
+    helix
+    ghostty
+  ]
 )

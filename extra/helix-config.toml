@@ -1,0 +1,30 @@
+theme = "base16_transparent-patch"
+
+[editor]
+line-number = "relative"
+mouse = false
+statusline.center = [ "version-control" ]
+smart-tab.enable = false
+auto-completion = false
+lsp.auto-signature-help = false
+auto-pairs = false
+
+cursor-shape.insert = "bar"
+cursor-shape.normal = "block"
+cursor-shape.select = "underline"
+
+file-picker.hidden = true
+file-picker.git-ignore = true
+
+[keys]
+normal.C-j = [ "goto_next_paragraph" ]
+normal.C-k = [ "goto_prev_paragraph" ]
+normal.C-y = [ ":clipboard-yank" ]
+normal.C-h = [ "flip_selections" ]
+normal.S-d = [ "vsplit", "goto_definition" ]
+normal.C-r = [ ":reload" ]
+
+select.C-j = [ "goto_next_paragraph" ]
+select.C-k = [ "goto_prev_paragraph" ]
+select.C-y = [ ":clipboard-yank" ]
+select.C-h = [ "flip_selections" ]

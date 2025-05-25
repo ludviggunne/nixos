@@ -150,15 +150,15 @@
     home.packages = import ./hm-packages.nix { inherit pkgs; };
 
     # @extra
+    xdg.configFile."ghostty/config".source = ./extra/ghostty-config;
+    xdg.configFile."helix/config.toml".source = ./extra/helix-config.toml;
     xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
+    xdg.configFile."alacritty/everforest_dark.toml".source = ./extra/alacritty-everforest_dark.toml;
     xdg.configFile."alacritty/acme.toml".source = ./extra/alacritty-acme.toml;
     xdg.configFile."alacritty/papercolor-light.toml".source = ./extra/alacritty-papercolor_light.toml;
-    xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
-    xdg.configFile."gdb/grep.py".source = pkgs.fetchurl {
-      url = "https://github.com/ludviggunne/gdb-scripts/raw/refs/heads/main/grep.py";
-      hash = "sha256-6ckfwLxPaXpiCkwIELI2UT9wD3LaiER2kNtqwQ74N4E=";
-    };
-    home.file.".gdbinit".source = ./extra/.gdbinit;
+    # xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
+    xdg.configFile."helix/themes/base16_transparent-patch.toml".source = ./extra/helix-base16_transparent-patch.toml;
+    home.file.".gdbinit".text = import ./gdbinit.nix { inherit pkgs; };
     home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
     home.file.".bashrc".source = ./extra/bashrc;
     home.file.".bash_profile".source = ./extra/bash_profile;
@@ -169,7 +169,7 @@
     programs.tmux = import ./tmux.nix;
     programs.bat = import ./bat.nix;
     # programs.zsh = import ./zsh.nix;
-    programs.helix = import ./helix.nix { inherit pkgs; };
+    # programs.helix = import ./helix.nix { inherit pkgs; };
     programs.gpg = import ./gpg.nix;
     programs.direnv = import ./direnv.nix;
     programs.rofi = import ./rofi.nix;
