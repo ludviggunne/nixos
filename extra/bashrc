@@ -1,51 +1,11 @@
 export EDITOR=hx
 
-alias git="git-fzf";
 alias rebuild="sudo nixos-rebuild switch -I nixos-config=$HOME/nixos/configuration.nix";
 alias config="$EDITOR $HOME/nixos";
-alias gitn="git --no-pager";
 alias ls="ls -l";
 alias ta="tmux attach-session -t";
 alias tn="tmux new-session -s";
 alias tl="tmux ls";
-alias nixde="echo use nix > .envrc; direnv allow";
-alias nixdef="echo use flake > .envrc; direnv allow";
-alias gclip="git log --oneline | fzf | cut -f1 -d' ' | xclip -rmlastnl -selection clipboard";
-alias git-watch="watchexec --quiet --clear=reset --no-default-ignore --ignore='*.lock' -- git status --short --branch";
-
-run-once () {
-	if [ $# = 1 ]
-	then
-		nix-shell -p "$1" --run "$*" &
-		disown
-		exit
-	else
-		>&2 echo 'usage: run-once <package> [args...]'
-	fi
-}
-export -f run-once
-
-cwdgrep () {
-	for pid in $(pgrep $@); do
-		readlink /proc/$pid/cwd
-	done
-}
-export -f cwdgrep
-
-fzed () {
-	RELOAD='reload:rg --column --color=always --smart-case {q} || :'
-	EDIT="$EDITOR {1} +{2}"
-
-	fzf --disabled --ansi --multi \
-	  --bind "start:$RELOAD" --bind "change:$RELOAD" \
-	  --bind "enter:become:$EDIT" \
-	  --bind "ctrl-o:execute:$EDIT" \
-	  --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
-	  --delimiter : \
-	  --preview 'bat --style=full --theme base16 --color=always --highlight-line {2} {1}' \
-	  --preview-window '~4,+{2}+4/3,<80(up)' \
-	  --query "$*"
-}
 
 eval "$(direnv hook bash)"
 

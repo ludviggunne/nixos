@@ -4,6 +4,6 @@
 
 {
   enable = true;
-  enableZshIntegration = true;
+  enableBashIntegration = true;
   pinentryPackage = pkgs.pinentry-curses;
 }

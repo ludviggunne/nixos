@@ -109,15 +109,6 @@
     pulse.enable = true;
     jack.enable = true;
 
-    # extraConfig.pipewire."92-low-latency" = {
-    #   "context.properties" = {
-    #     "default.clock.rate" = 48000;
-    #     "default.clock.quantum" = 1024;
-    #     "default.clock.min-quantum" = 1024;
-    #     "default.clock.max-quantum" = 1024;
-    #   };
-    # };
-
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -142,8 +133,6 @@
 
   services.nixseparatedebuginfod.enable = true;
 
-  # programs.zsh.enable = true;
-
   # @home
   home-manager.users.ludviggl = {
     home.stateVersion = "24.05";
@@ -152,28 +141,18 @@
     # @extra
     xdg.configFile."ghostty/config".source = ./extra/ghostty-config;
     xdg.configFile."helix/config.toml".source = ./extra/helix-config.toml;
-    xdg.configFile."alacritty/zenburn.toml".source = ./extra/alacritty-zenburn.toml;
-    xdg.configFile."alacritty/everforest_dark.toml".source = ./extra/alacritty-everforest_dark.toml;
-    xdg.configFile."alacritty/acme.toml".source = ./extra/alacritty-acme.toml;
-    xdg.configFile."alacritty/papercolor-light.toml".source = ./extra/alacritty-papercolor_light.toml;
     # xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
     xdg.configFile."helix/themes/base16_transparent-patch.toml".source = ./extra/helix-base16_transparent-patch.toml;
     home.file.".gdbinit".text = import ./gdbinit.nix { inherit pkgs; };
-    home.file.".local/share/rofi/squared-nord.rasi".source = ./extra/squared-nord.rasi;
     home.file.".bashrc".source = ./extra/bashrc;
     home.file.".bash_profile".source = ./extra/bash_profile;
 
     # @programs
     programs.git = import ./git.nix;
-    programs.alacritty = import ./alacritty.nix;
     programs.tmux = import ./tmux.nix;
     programs.bat = import ./bat.nix;
-    # programs.zsh = import ./zsh.nix;
-    # programs.helix = import ./helix.nix { inherit pkgs; };
     programs.gpg = import ./gpg.nix;
     programs.direnv = import ./direnv.nix;
-    programs.rofi = import ./rofi.nix;
-    programs.vim = import ./vim.nix { inherit pkgs; };
 
     # @services
     services.gpg-agent = import ./gpg-agent.nix { inherit pkgs; };
@@ -199,11 +178,6 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # virtualisation.docker.rootless = {
-  #   enable = true;
-  #   setSocketVariable = true;
-  # };
-
   # virtualisation.virtualbox.host.enable = true;
   # users.extraGroups.vboxusers.members = [ "ludviggl" ];
 
@@ -222,19 +196,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
-  # services.pipewire.extraConfig.pipewire."91-null-sinks" = {
-  #   "context.objects" = [
-  #     {
-  #       # A default dummy driver. This handles nodes marked with the "node.always-driver"
-  #       # properyty when no other driver is currently active. JACK clients need this.
-  #       factory = "spa-node-factory";
-  #       args = {
-  #         "factory.name"     = "support.node.driver";
-  #         "node.name"        = "Dummy-Driver";
-  #         "priority.driver"  = 8000;
-  #       };
-  #     }
-  #   ];
-  # };
 }

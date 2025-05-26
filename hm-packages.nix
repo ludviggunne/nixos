@@ -12,7 +12,6 @@
   evince
   tmux
   libreoffice
-  # zsh
   cryptsetup
   gnupg
   pinentry
@@ -24,7 +23,6 @@
   sxiv
   watchexec
   pavucontrol
-  spotify-qt
   spotifyd
   prismlauncher
   strawberry
@@ -32,14 +30,12 @@
   moreutils
   vlc
   termdown
-  hub
   bat
   fzf
   xclip
   clang-tools
   python3
   rustup
-  thunderbird
   vital
   linuxsampler
   spotify
@@ -72,10 +68,6 @@
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
 ) ++ ( # scripts
   let scripts = [
-    {
-      path = ./extra/git-fzf.sh;
-      name = "git-fzf";
-    }
     {
       path = ./extra/pdfind.sh;
       name = "pdfind";
