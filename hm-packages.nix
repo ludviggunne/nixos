@@ -61,8 +61,8 @@
     {
       owner = "ludviggunne";
       repo = "git-commands";
-      rev = "0a4bab81468fd1fc1457bb529943bcc5fe3354a8";
-      sha256 = "sha256-GKiEFprL/2BUHqscp292jHIEmK0AGnBKoD6//loCd3I=";
+      rev = "1b0874d722bfd272db7044e39d1a1c84d809791c";
+      sha256 = "sha256-PgebVs3vhWKi50sZJVf/hwrR5TS0ujblGalM/iCctzg=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
