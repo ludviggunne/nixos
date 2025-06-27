@@ -1,0 +1,6 @@
+[language-server]
+clangd = { command = "clangd", args = [ "-header-insertion=never" ] }
+
+[[language]]
+name = "bash"
+indent = { tab-width = 8, unit = "\t" }
