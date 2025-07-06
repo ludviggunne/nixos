@@ -3,16 +3,7 @@
   userName = "Ludvig Gunne Lindström";
   userEmail = "ludviggunnelindstrom@gmail.com";
   aliases = {
-    ci = "commit";
-    st = "status";
-    ap = "add --patch";
-    dc = "diff --cached";
-    cia = "commit --amend";
-    ri = "rebase -i";
-    sw = "switch";
-    d = "diff";
-    sc = "switch --create";
-    co = "checkout";
+    changes = "log --oneline ORIG_HEAD..";
   };
   extraConfig = {
     core.editor = "hx";

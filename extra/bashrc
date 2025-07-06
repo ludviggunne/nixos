@@ -6,6 +6,8 @@ alias ls="ls -l";
 alias ta="tmux attach-session -t";
 alias tn="tmux new-session -s";
 alias tl="tmux ls";
+alias ts="tmux-select";
+alias nix-build="nix-build --no-out-link"
 
 eval "$(direnv hook bash)"
 

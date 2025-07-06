@@ -61,13 +61,17 @@
     {
       owner = "ludviggunne";
       repo = "git-commands";
-      rev = "1b0874d722bfd272db7044e39d1a1c84d809791c";
-      sha256 = "sha256-PgebVs3vhWKi50sZJVf/hwrR5TS0ujblGalM/iCctzg=";
+      rev = "82f889324bc11de850bd5d3f34e692479909675f";
+      sha256 = "sha256-xO6p67+nBWF6LJoA+r5X5Rfijk69EmSDDW/rZun8W14=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
 ) ++ ( # scripts
   let scripts = [
+    {
+      path = ./extra/tmux-select.sh;
+      name = "tmux-select";
+    }
     {
       path = ./extra/pdfind.sh;
       name = "pdfind";
