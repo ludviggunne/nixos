@@ -16,6 +16,7 @@ set auto-load local-gdbinit
 set print pretty on
 set index-cache enabled on
 set history remove-duplicates unlimited
+set style enabled off
 
 source ${gdb-scripts}/source.py
 ''

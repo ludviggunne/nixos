@@ -8,6 +8,7 @@
   extraConfig = {
     core.editor = "hx";
     init.defaultBranch = "main";
+    advice.detachedHead = false;
     # core.pager = "bat";
   };
   ignores = [

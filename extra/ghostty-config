@@ -1,4 +1,6 @@
-font-size = 10
+font-size = 8
+font-feature = -calt, -liga, -dlig
 cursor-style = bar
 theme = GitLab-Light
-# theme = GitLab-Dark 
+window-decoration = server
+# background = #ffcae0

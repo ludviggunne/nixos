@@ -19,7 +19,6 @@
   surge-XT
   man-pages
   man-pages-posix
-  stdmanpages
   sxiv
   watchexec
   pavucontrol
@@ -61,8 +60,8 @@
     {
       owner = "ludviggunne";
       repo = "git-commands";
-      rev = "82f889324bc11de850bd5d3f34e692479909675f";
-      sha256 = "sha256-xO6p67+nBWF6LJoA+r5X5Rfijk69EmSDDW/rZun8W14=";
+      rev = "234809dffbc66ab23f841fcff80599fd54fb02b4";
+      sha256 = "sha256-XPaFNYMrG4hyb/p19YBGGeTj9zp89hGFzb8wditeCd4=";
     }
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos

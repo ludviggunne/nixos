@@ -119,6 +119,10 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  programs = {
+    steam.enable = true;
+  };
+
   users.users.ludviggl = {
     isNormalUser = true;
     description = "Ludvig Gunne Lindström";
@@ -142,7 +146,7 @@
     xdg.configFile."ghostty/config".source = ./extra/ghostty-config;
     xdg.configFile."helix/config.toml".source = ./extra/helix-config.toml;
     xdg.configFile."helix/languages.toml".source = ./extra/helix-languages.toml;
-    # xdg.configFile."helix/themes/monochrome.toml".source = ./extra/helix-monochrome.toml;
+    xdg.configFile."helix/themes/monochrome-light.toml".source = ./extra/helix-monochrome-light.toml;
     xdg.configFile."helix/themes/base16_transparent-patch.toml".source = ./extra/helix-base16_transparent-patch.toml;
     home.file.".gdbinit".text = import ./gdbinit.nix { inherit pkgs; };
     home.file.".bashrc".source = ./extra/bashrc;

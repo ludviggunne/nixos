@@ -5,8 +5,8 @@
     set -s escape-time 0
 
     bind C-e send-prefix
-    bind n split-window -hc "#{pane_current_path}"
-    bind s split-window -vc "#{pane_current_path}"
+    bind s split-window -hc "#{pane_current_path}"
+    bind v split-window -vc "#{pane_current_path}"
     bind d kill-pane
     bind q kill-window
     bind End kill-session
@@ -22,5 +22,8 @@
     set -g base-index 1
     setw -g pane-base-index 1
     set -g mouse on 
+
+    set -g status-bg "#404040"
+    set -g status-fg "#ffffff"
   '';
 }
