@@ -16,3 +16,4 @@ source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
 export PS1='[\u@\h:\W$(__git_ps1 " (%s)")]\$ '
 
 export HISTCONTROL=ignoreboth:erasedups
+stty -ixon

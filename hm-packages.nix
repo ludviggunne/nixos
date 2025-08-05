@@ -66,20 +66,7 @@
   ];
   in map (repo: pkgs.callPackage (pkgs.fetchFromGitHub repo) {}) repos
 ) ++ ( # scripts
-  let scripts = [
-    {
-      path = ./extra/tmux-select.sh;
-      name = "tmux-select";
-    }
-    {
-      path = ./extra/pdfind.sh;
-      name = "pdfind";
-    }
-    {
-      path = ./extra/spotify-play-pause.sh;
-      name = "spotify-play-pause";
-    }
-  ];
+  let scripts = [];
   in map (script: pkgs.writeShellScriptBin script.name (builtins.readFile script.path)) scripts
 ) ++ ( # unstable stuff
   let nixpkgs-unstable = import <nixpkgs-unstable> {}; in
