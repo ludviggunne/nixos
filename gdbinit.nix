@@ -5,8 +5,8 @@ let
   gdb-scripts = fetch-repo {
     owner = "ludviggunne";
     repo = "gdb-scripts";
-    rev = "17545e9ac5eb17ebe8809d3b33ff9ecd8a6e4246";
-    sha256 = "sha256-tX+Sp1fVSQxegbox2ZWWPMwlCagpWWLpnWG9nwY5X1o";
+    rev = "5c56ccd9eec852067987ed13f0be72bad3553329";
+    sha256 = "sha256-mRw/AX4k0Zy1GuZUIOUm2cnupjoD9kP/NyEg+f4Z68g=";
   };
 in
 
