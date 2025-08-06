@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME"/.config}"
+
+scriptdir="$(dirname "$(realpath --no-symlinks "${BASH_SOURCE[0]}")")"
+
+install_() {
+	local src dst
+	src="$scriptdir/configs/$1"
+	dst="$2"
+	printf "\t%s\n" "${dst##"$HOME"/}"
+	mkdir -p "$(dirname "$dst")"
+	ln -sf "$src" "$dst"
+}
+
+install_xdg() {
+	install_ "$1" "$XDG_CONFIG_HOME/$2"
+}
+
+install_home() {
+	install_ "$1" "$HOME/$2"
+}
+
+install_home    tmux.conf                     .tmux.conf
+install_home    bashrc                        .bashrc
+install_home    bash_profile                  .bash_profile
+
+install_xdg     ghostty-config                ghostty/config
+install_xdg     helix-config.toml             helix/config.toml
+install_xdg     helix-languages.toml          helix/languages.toml
+install_xdg     helix-monochrome-light.toml   helix/themes/monochrome-light.toml
+install_xdg     helix-monochrome.toml         helix/themes/monochrome.toml

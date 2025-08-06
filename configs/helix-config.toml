@@ -1,4 +1,4 @@
-theme = "monochrome-light"
+theme = "monochrome"
 
 [editor]
 line-number = "relative"

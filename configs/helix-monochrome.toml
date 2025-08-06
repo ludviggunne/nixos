@@ -17,7 +17,7 @@
 # UI ==============================
 # For styling helix itself.
 
-"ui.background" = { bg = "black" }# Default background color.
+"ui.background" = {}# Default background color.
 "ui.window" = { fg = "white" } # Window border between splits.
 "ui.gutter" = { fg = "white" } # Left gutter for diagnostics and breakpoints.
 
@@ -31,7 +31,7 @@
 # "ui.cursor.select" = { } # The cursor in select mode (v).
 # "ui.cursor.match" = { } # The matching parentheses of that under the cursor.
 
-"ui.selection" = { bg = "gray2" } # All currently selected text.
+"ui.selection" = { bg = "gray4" } # All currently selected text.
 # "ui.selection.primary" = { } # The primary selection when there are multiple.
 
 "ui.linenr" = { fg = "gray5" } # Line numbers.

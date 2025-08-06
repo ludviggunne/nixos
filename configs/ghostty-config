@@ -1,0 +1,21 @@
+font-size = 12
+font-feature = -calt, -liga, -dlig
+
+font-family = BlexMono Nerd Font
+# font-family = ComicShannsMono Nerd Font Mono
+# font-family = CommitMono Nerd Font
+# font-family = FreeMono
+# font-family = Terminus
+# font-family = GeistMonooNerd Font
+# font-family = VictorMono Nerd Font
+
+cursor-style = bar
+window-decoration = server
+background-opacity = 0.9
+# background = #ffcae0
+# theme = GitLab-Light
+
+keybind = ctrl+m=reload_config
+keybind = ctrl+enter=unbind
+# keybind = alt+j=text:%
+
