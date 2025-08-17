@@ -30,3 +30,4 @@ install_xdg     helix-config.toml             helix/config.toml
 install_xdg     helix-languages.toml          helix/languages.toml
 install_xdg     helix-monochrome-light.toml   helix/themes/monochrome-light.toml
 install_xdg     helix-monochrome.toml         helix/themes/monochrome.toml
+install_xdg     helix-eiffel-patch.toml       helix/themes/eiffel-patch.toml

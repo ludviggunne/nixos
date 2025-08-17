@@ -1,25 +1,70 @@
 export EDITOR=hx
 
+# NixOs configuration
 alias rebuild="sudo nixos-rebuild switch -I nixos-config=$HOME/nixos/configuration.nix";
 alias config="$EDITOR $HOME/nixos";
-alias ls="ls -l";
+
+# tmux stuff
 alias ta="tmux attach-session -t";
 alias tn="tmux new-session -s";
 alias tl="tmux ls";
-alias ts="tmux-select";
+
+# Don't create symlink to nix store for nix-build
 alias nix-build="nix-build --no-out-link"
+
+# Job control
+alias o=%+
+alias p=%-
+alias l=jobs
+alias 1=%1
+alias 2=%2
+alias 3=%3
+alias 4=%4
+alias 5=%5
+alias 6=%6
+alias 7=%7
+alias 8=%8
+alias 9=%9
+
+alias ls="ls -l";
 
 eval "$(direnv hook bash)"
 
+# Git prompt
 export GIT_PS1_SHOWDIRTYSTATE=1
 source ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
 export PS1='[\u@\h:\W$(__git_ps1 " (%s)")]\$ '
 
 export HISTCONTROL=ignoreboth:erasedups
-stty -ixon
 
+# Something about cursor shape in tmux...
+stty -ixon
 if [ -n "$TMUX" ]; then
   printf '\033[6 q'
 fi
 
+# TODO: maybe move this elsewhere
+_ollama_completions() {
+	local actions=(serve create show run stop pull push list ps cp rm help)
+	local models
+	models() {
+		while read -r name _; do
+			[ "$name" = NAME ] && continue
+			echo "$name"
+		done < <(ollama list)
+	}
+	case "$COMP_CWORD" in
+	1) COMPREPLY=($(compgen -W "${actions[*]}" -- "${COMP_WORDS[1]}")) ;;
+	2)
+		# TODO: maybe add more completions here
+		case "${COMP_WORDS[1]}" in
+		run|rm|show) COMPREPLY=($(compgen -W "$(models 2>/dev/null)" -- "${COMP_WORDS[2]}")) ;;
+		*) ;;
+		esac
+		;;
+	*) ;;
+	esac
+}
+COMP_WORDBREAKS="${COMP_WORDBREAKS//\:/}"
+complete -F _ollama_completions ollama
 
